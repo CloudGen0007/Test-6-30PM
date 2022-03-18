@@ -1,6 +1,37 @@
-sdfghsadfhsdfh
-asfg
+Installation Steps of Docker CE (Community Edition) on CentOS 7
+If you looking for stable and latest version Docker then you should go for Docker CE. Below are the steps how to install Docker CE.
 
-sad
-gasd
-g
+Set the repository for Docker Community Edition
+
+First install the required packages for setting up Docker Community edition repo using the following command
+
+[root@localhost ~]# yum install yum-utils device-mapper-persistent-data lvm2 -y
+Run the beneath command to set the stable repository of Docker CE (Community edition)
+
+[root@localhost ~]# yum-config-manager --add-repo  https://download.docker.com/linux/centos/docker-ce.repo
+
+Now use the following yum command to install Docker CE.
+
+[root@localhost ~]# yum install docker-ce -y
+Verify the Docker Version using the beneath command
+
+[root@localhost ~]# docker --version
+Docker version 19.03.12, build 48a66213fe
+OR
+
+[root@testserver ~]# docker version
+Client: Docker Engine - Community
+ Version:           19.03.12
+ API version:       1.40
+ Go version:        go1.13.10
+ Git commit:        48a66213fe
+ Built:             Mon Jun 22 15:46:54 2020
+ OS/Arch:           linux/amd64
+ Experimental:      false
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+[root@testserver ~]# 
+[root@localhost ~]#
+Start the Docker Service
+Once the Installation is finished , start docker service and enable it at boot using below commands
+
+[root@localhost ~]# systemctl start docker && systemctl enable docker
